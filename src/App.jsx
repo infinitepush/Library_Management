@@ -1,6 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { UserProvider, useUser } from './context/UserContext';
-import { Landing } from './pages/Landing';
+import Landing from './pages/Landing';
+
+// New Login Pages
+import Login from './pages/auth/Login';
+import StudentLogin from './pages/auth/StudentLogin';
+import LibrarianLogin from './pages/auth/LibrarianLogin';
+import AdminLogin from './pages/auth/AdminLogin';
 
 // Layouts
 import { StudentLayout } from './components/layout/StudentLayout';
@@ -31,11 +37,11 @@ const ProtectedRoute = ({ children, allowedRole }) => {
   const { currentRole } = useUser();
   
   if (!currentRole) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace />; // Redirect to the main login page
   }
   
   if (allowedRole && currentRole !== allowedRole) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace />; // Redirect to the main login page if role mismatch
   }
   
   return children;
@@ -45,6 +51,10 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/login/student" element={<StudentLogin />} />
+      <Route path="/login/librarian" element={<LibrarianLogin />} />
+      <Route path="/login/admin" element={<AdminLogin />} />
       
       {/* Student Routes */}
       <Route

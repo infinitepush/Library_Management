@@ -32,7 +32,7 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
       />
       
       {/* Modal Content */}
-      <div className={`relative bg-gray-800 rounded-xl shadow-2xl border border-gray-700 w-full ${sizes[size]} max-h-[90vh] overflow-hidden flex flex-col animate-fadeIn`}>
+      <div className={`relative bg-gray-800 rounded-xl shadow-2xl border border-gray-700 w-full ${sizes[size]} max-h-[90vh] overflow-hidden flex flex-col animate-fadeIn min-w-[320px] lg:min-w-[480px]` }>
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
           <h2 className="text-xl font-semibold text-white">{title}</h2>

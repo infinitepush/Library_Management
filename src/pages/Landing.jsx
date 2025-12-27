@@ -1,12 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../context/UserContext';
 import { Library, User, Package, Shield } from 'lucide-react';
 import { UserRole } from '../constants/enums';
 
-export const Landing = () => {
+export default function Landing() {
   const navigate = useNavigate();
-  const { selectRole } = useUser();
-  
   const roles = [
     {
       role: UserRole.STUDENT,
@@ -14,7 +11,7 @@ export const Landing = () => {
       description: 'Search books, manage requests, and track your borrowed items',
       icon: User,
       color: 'from-blue-500 to-indigo-600',
-      path: '/student'
+      path: '/login/student'
     },
     {
       role: UserRole.LIBRARIAN,
@@ -22,7 +19,7 @@ export const Landing = () => {
       description: 'Manage inventory, process requests, and handle fines',
       icon: Package,
       color: 'from-purple-500 to-pink-600',
-      path: '/librarian'
+      path: '/login/librarian'
     },
     {
       role: UserRole.ADMIN,
@@ -30,12 +27,12 @@ export const Landing = () => {
       description: 'Oversee operations, manage users, and view analytics',
       icon: Shield,
       color: 'from-orange-500 to-red-600',
-      path: '/admin'
+      path: '/login/admin'
     }
   ];
   
-  const handleRoleSelect = (role, path) => {
-    selectRole(role);
+  const handleRoleSelect = (_role, path) => {
+    // Navigate to the role-specific login page. Role will be set after successful login.
     navigate(path);
   };
   

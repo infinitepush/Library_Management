@@ -146,6 +146,8 @@
     color: var(--color-text-primary);
     transition: all var(--transition-base);
     width: 100%;
+    min-height: 44px;
+    display: block;
   }
   
   .input-field:focus {
@@ -195,5 +197,12 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow-xl);
     border-color: var(--color-primary);
+  }
+
+  /* Auth card helper: used on login pages to ensure readable width */
+  .auth-card {
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
   }
 }
